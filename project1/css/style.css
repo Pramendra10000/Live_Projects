@@ -19,23 +19,32 @@
   background-color: #f4f6f9;
 }
 
-
-/* hero sectio  css  */
-/* .hero {
-  background: linear-gradient(to right, #007bff, #6610f2);
-  color: white;
-  padding: 60px 20px;
-} */
- body {
+/* Global Styles */
+body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
 }
 
+/* Hero Section ================================================================ */
+/* Global Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Purple to blue */
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: white;
   padding: 80px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 .hero-content {
@@ -57,7 +66,7 @@
   letter-spacing: 1px;
   margin-bottom: 10px;
   color: #ffffff;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .hero-text .lead {
@@ -73,16 +82,14 @@
   color: #f0f0f0;
 }
 
-
 .hero-image {
   flex: 1;
   min-width: 250px;
   text-align: center;
   padding: 24px;
-    position: relative;
-    PADDING-LEFT: 376PX;
 }
 
+/* Circle Frame with Animation */
 .circle-frame {
   position: relative;
   display: inline-block;
@@ -92,17 +99,20 @@
   z-index: 1;
 }
 
+/* Image Styling */
 .circle-frame img {
-    width: 114%;
-    height: 115%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid white;
-    z-index: 3;
-    position: relative;
-    margin: -14px -1px -1px 18px;
+  width: 114%;
+  height: 115%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+  z-index: 3;
+  position: relative;
+  margin: -14px -1px -1px 18px;
+  transition: all 0.3s ease;
 }
 
+/* Glow Rings */
 .circle-frame::before,
 .circle-frame::after {
   content: '';
@@ -110,6 +120,7 @@
   border-radius: 50%;
   z-index: 0;
   opacity: 0.6;
+  transition: all 0.3s ease;
 }
 
 .circle-frame::before {
@@ -121,21 +132,85 @@
 }
 
 .circle-frame::after {
-    width: 305px;
-    height: 303px;
-    background: rgba(255, 255, 255, 0.1);
-    top: -53px;
-    left: -60px;
+  width: 305px;
+  height: 303px;
+  background: rgba(255, 255, 255, 0.1);
+  top: -53px;
+  left: -60px;
 }
-/* hero sectio  css  */
 
+/* Hover Animation */
+.circle-frame:hover::after {
+  animation: spinRing 4s linear infinite;
+}
+
+.circle-frame:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Keyframe for rotating ring */
+@keyframes spinRing {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    padding-left: 0;
+    padding-top: 20px;
+  }
+
+  .circle-frame {
+    width: 160px;
+    height: 160px;
+  }
+
+  .circle-frame::before {
+    width: 190px;
+    height: 190px;
+    top: -15px;
+    left: -15px;
+  }
+
+  .circle-frame::after {
+    width: 240px;
+    height: 240px;
+    top: -40px;
+    left: -40px;
+  }
+
+  .circle-frame img {
+    width: 110%;
+    height: 110%;
+    margin: -10px 0 0 10px;
+  }
+}
+
+/* Other Reusable Styles */
 .section-title {
   border-left: 4px solid #007bff;
   padding-left: 12px;
   margin-bottom: 30px;
 }
 
-.skill-card, .company-card {
+.skill-card,
+.company-card {
   border: none;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -155,6 +230,8 @@
   object-fit: contain;
 }
 
+
+/* Hero Section ================================================================ */
 
 /* Ps added for the Project description css  */
 .project-grid {
