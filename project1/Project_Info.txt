@@ -1,0 +1,32 @@
+LIVE URL :- https://pramendra10000.github.io/Live_Projects/project1/
+
+GIT CODE : : -
+
+
+//For initialization of git to project .
+git init
+
+// For cheking if there any remote origin present or not.
+git remote -v
+
+// For removing all origin present to code.
+git remote remove origin
+
+// For adding git origin .
+git remote add origin https://github.com/Pramendra10000/LIVE_PROJECTS.git
+
+//
+git branch
+
+//
+ git pull origin WebPage
+
+//
+git add .
+
+//
+git commit -m "Initial commit"
+
+//
+git push -u origin WebPage
+
