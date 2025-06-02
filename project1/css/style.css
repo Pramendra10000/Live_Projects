@@ -19,11 +19,115 @@
   background-color: #f4f6f9;
 }
 
-.hero {
+
+/* hero sectio  css  */
+/* .hero {
   background: linear-gradient(to right, #007bff, #6610f2);
   color: white;
   padding: 60px 20px;
+} */
+ body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
 }
+
+.hero {
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Purple to blue */
+  color: white;
+  padding: 80px 20px;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+  max-width: 600px;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.hero-text .lead {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #f0f0f0;
+}
+
+
+.hero-image {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+  padding: 24px;
+    position: relative;
+    PADDING-LEFT: 376PX;
+}
+
+.circle-frame {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.circle-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+  z-index: 3;
+  position: relative;
+}
+
+.circle-frame::before,
+.circle-frame::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.circle-frame::before {
+  width: 240px;
+  height: 240px;
+  background: rgba(255, 255, 255, 0.2);
+  top: -20px;
+  left: -20px;
+}
+
+.circle-frame::after {
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 255, 255, 0.1);
+  top: -40px;
+  left: -40px;
+}
+
+/* hero sectio  css  */
 
 .section-title {
   border-left: 4px solid #007bff;
@@ -50,3 +154,106 @@
   height: 40px;
   object-fit: contain;
 }
+
+
+/* Ps added for the Project description css  */
+.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.project-card {
+    flex: 1 1 calc(20% - 16px);
+    background: #f9f9f9;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(25 207 54 / 55%);
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.project-card:hover {
+  background: #eef;
+  transform: translateY(-4px);
+}
+
+.project-modal {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.project-modal.hidden {
+  display: none;
+}
+
+#close-modal {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+.project-card.active {
+  background-color: #cce4ff; /* Change this to whatever highlight color you want */
+  border: 2px solid #3399ff;
+}
+
+
+
+/* Ps added for the Project description css  */
+
+
+/* RIBBON ADDED   */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* section {
+  scroll-margin-top: 80px;
+} */
+
+/* Only apply to scrollable anchor targets */
+#projects, #skills, #work-experience, #education, #contact {
+  scroll-margin-top: 90px; /* Adjust to match ribbon height */
+}
+
+/* Removed this block — it was breaking layout */
+/* 
+#projects, #skills, #work-experience, #education, #contact {
+  position: relative;
+  padding-top: 100px;
+  margin-top: -100px;
+}
+*/
+
+.navbar {
+  /* background-color: #6a11cb; */
+
+   background: linear-gradient(19deg, #6a11cb, #2575fc);
+
+  
+}
+.collapse ul li a {
+  font-weight: bold;
+}
+
+.collapse ul li a:hover {
+  font-weight: bold;
+  border: 2px solid rgba(140, 13, 237, 0.868); 
+  border-radius: 5px; 
+}
+
+
+/* RIBBON ADDED   */
+
