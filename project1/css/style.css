@@ -1,0 +1,52 @@
+  /* body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+    }
+    .hero {
+      background: linear-gradient(to right, #007bff, #6610f2);
+      color: white;
+      padding: 60px 20px;
+    }
+    .section-title {
+      border-left: 4px solid #007bff;
+      padding-left: 12px;
+      margin-bottom: 30px;
+    } */
+
+
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f9;
+}
+
+.hero {
+  background: linear-gradient(to right, #007bff, #6610f2);
+  color: white;
+  padding: 60px 20px;
+}
+
+.section-title {
+  border-left: 4px solid #007bff;
+  padding-left: 12px;
+  margin-bottom: 30px;
+}
+
+.skill-card, .company-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.skills-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.skills-logos img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
