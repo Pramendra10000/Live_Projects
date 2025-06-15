@@ -86,21 +86,33 @@ const projectDetails = {
   `
 };
 
+let currentOpenId = null; // Track which card is currently open
+
 document.querySelectorAll('.project-card').forEach(card => {
   card.addEventListener('click', () => {
     const id = card.getAttribute('data-id');
 
-    // Update modal content
-    modalContent.innerHTML = projectDetails[id];
-    modal.classList.remove('hidden');
+    // If the same card is clicked again, close the modal
+    if (id === currentOpenId) {
+      modal.classList.add('hidden');
+      card.classList.remove('active');
+      currentOpenId = null;
+    } else {
+      // Update modal content
+      modalContent.innerHTML = projectDetails[id];
+      modal.classList.remove('hidden');
 
-    // Reset all card styles
-    document.querySelectorAll('.project-card').forEach(c => {
-      c.classList.remove('active');
-    });
+      // Reset all card styles
+      document.querySelectorAll('.project-card').forEach(c => {
+        c.classList.remove('active');
+      });
 
-    // Highlight the clicked card
-    card.classList.add('active');
+      // Highlight the clicked card
+      card.classList.add('active');
+
+      // Set current open ID
+      currentOpenId = id;
+    }
   });
 });
 
@@ -109,4 +121,5 @@ closeBtn.addEventListener('click', () => {
   document.querySelectorAll('.project-card').forEach(c => {
     c.classList.remove('active');
   });
+  currentOpenId = null; // Reset open ID when modal is closed manually
 });
