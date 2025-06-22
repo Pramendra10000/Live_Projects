@@ -123,3 +123,28 @@ closeBtn.addEventListener('click', () => {
   });
   currentOpenId = null; // Reset open ID when modal is closed manually
 });
+
+
+
+
+  function showToast(message, isSuccess = true) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-message');
+
+    toastMsg.textContent = message;
+    toast.classList.remove('hidden');
+
+    // Set background based on success or error
+    toast.style.backgroundColor = isSuccess ? '#ccffcc' : '#ffd6d6'; // light green / light red
+    toast.style.color = '#111'; // black text
+
+    // Auto-hide after 4 seconds
+    setTimeout(() => {
+      hideToast();
+    }, 4000);
+  }
+
+  function hideToast() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('hidden');
+  }

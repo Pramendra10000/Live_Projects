@@ -134,7 +134,7 @@
    <div class="project-grid"> 
     <div class="project-card" data-id="hrms"> 
      <h3>HRMS</h3> 
-    <p>HRMS & Payroll software gives employees the access to their timesheet and views</p>
+     <p>HRMS &amp; Payroll software gives employees the access to their timesheet and views</p> 
     </div> 
     <div class="project-card" data-id="crm"> 
      <h3>CRM Portal</h3> 
@@ -170,11 +170,134 @@
   <section class="container py-4"> 
    <h2 class="section-title">Languages</h2> 
    <p>English, Hindi, Marathi, Punjabi</p> 
+  </section>
+  
+  
+  
+  <!-- "subscribe-hire" --> 
+  <section class="subscribe-hire"> 
+  <div class="form-container">
+  <h2>📬 Subscribe for Updates</h2>
+  <form id="subscribeForm">
+    <input type="email" id="subscribeEmail" name="subscriber_email" placeholder="Enter your email" required />
+    <button id="btnsub" type="submit">Subscribe</button>
+  </form>
+</div>
+
+   <div class="form-container"> 
+    <h2>💼 Hire Me</h2> 
+    <form id="hireForm"> 
+     <input type="text" id="name" placeholder="Your Name" required> 
+     <input type="email" id="email" placeholder="Your Email" required> <textarea id="message" placeholder="Your Message" rows="4" required></textarea> <button id="btnsub" type="submit">Send Request</button> 
+    </form> 
+   </div> 
   </section> <!-- Footer --> 
   <footer class="bg-dark text-white text-center py-3">
     © 2025 Pramendra Singh | All rights reserved 
   </footer> 
+
+
+<!-- Toast Container -->
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> 
-  <script src="js/app.js"></script> 
- </body>
+
+<!-- Load EmailJS SDK v4 from CDN (UMD version) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("Portfolio Loaded Successfully");
+
+    // Initialize EmailJS
+    emailjs.init("YH28aM0vqzafMJsrU");
+
+  // Form submission listener
+ // Show toast function
+function showToast(message, isSuccess = true) {
+  const toast = document.getElementById('toast');
+  const toastMsg = document.getElementById('toast-message');
+
+  toastMsg.innerHTML = isSuccess ? `✅ ${message}` : `❌ ${message}`;
+  toast.style.backgroundColor = isSuccess ? "#0a0" : "#700";
+  toast.classList.remove('hidden');
+
+  // Auto-close after 4 seconds
+  setTimeout(() => {
+    hideToast();
+  }, 4000);
+}
+
+// Hide toast
+function hideToast() {
+  const toast = document.getElementById('toast');
+  toast.classList.add('hidden');
+}
+
+// EmailJS Submit
+document.getElementById('subscribeForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const emailInput = document.getElementById('subscribeEmail');
+  const email = emailInput.value.trim();
+
+  if (!email) {
+    showToast("⚠️ Please enter a valid email.", false);
+    return;
+  }
+
+  const name = email.split('@')[0];
+
+  const templateParams = {
+    user_email: email,
+    name: name,
+    time: new Date().toLocaleString()
+  };
+
+  emailjs.send('service_xxbfqso', 'template_iusaubb', templateParams)
+    .then(() => {
+      showToast("✅ Subscribed successfully!", true);
+      document.getElementById('subscribeForm').reset();
+    })
+    .catch((error) => {
+      console.error("EmailJS Error:", error);
+      showToast("❌ Subscription failed. Please try again.", false);
+    });
+});
+
+
+
+
+    // Hire Form Submission
+    document.getElementById('hireForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        email: email,
+        message: message
+      };
+
+      emailjs.send('service_xxbfqso', 'template_mvtz6yh', templateParams)
+        .then(() => {
+          alert("✅ Email sent successfully!");
+          this.reset();
+        }, (error) => {
+          alert("❌ Failed to send email. Check console.");
+          console.error("EmailJS Error:", error);
+        });
+    });
+  });
+</script>
+
+
+<script src="js/app.js"></script> <!-- Load EmailJS SDK --> 
+
+
+</body>
 </html>
