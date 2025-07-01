@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Toaster Test</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .notifications {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toast {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border-left: 5px solid;
+      padding: 12px 16px;
+      margin-top: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      width: 320px;
+      animation: slideIn 0.4s ease forwards;
+      color: #000;
+      font-family: system-ui, sans-serif;
+    }
+
+    .toast.hide {
+      animation: slideOut 0.4s ease forwards;
+    }
+
+    .toast .column {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toast i.fa-xmark {
+      cursor: pointer;
+      margin-left: 12px;
+    }
+
+    .toast.success { border-color: #28a745; }
+    .toast.error { border-color: #dc3545; }
+    .toast.warning { border-color: #ffc107; }
+    .toast.info { border-color: #17a2b8; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(100%); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideOut {
+      from { opacity: 1; transform: translateX(0); }
+      to { opacity: 0; transform: translateX(120%); }
+    }
+  </style>
+</head>
+<body>
+
+<button onclick="createToast('success')">Test Success Toast</button>
+<ul class="notifications"></ul>
+
+<script>
+  const notifications = document.querySelector(".notifications");
+
+  const toastDetails = {
+    timer: 5000,
+    success: {
+      icon: 'fa-circle-check',
+      text: 'Success: This is a success toast.',
+    },
+    error: {
+      icon: 'fa-circle-xmark',
+      text: 'Error: This is an error toast.',
+    },
+    warning: {
+      icon: 'fa-triangle-exclamation',
+      text: 'Warning: This is a warning toast.',
+    },
+    info: {
+      icon: 'fa-circle-info',
+      text: 'Info: This is an information toast.',
+    }
+  };
+
+  const removeToast = (toast) => {
+    toast.classList.add("hide");
+    if (toast.timeoutId) clearTimeout(toast.timeoutId);
+    setTimeout(() => toast.remove(), 500);
+  };
+
+  const createToast = (id) => {
+    const { icon, text } = toastDetails[id];
+    const toast = document.createElement("li");
+    toast.className = `toast ${id}`;
+    toast.innerHTML = `<div class="column">
+                         <i class="fa-solid ${icon}"></i>
+                         <span>${text}</span>
+                      </div>
+                      <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+    notifications.appendChild(toast);
+    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
+  };
+</script>
+
+</body>
+</html>
